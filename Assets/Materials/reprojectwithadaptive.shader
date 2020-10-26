@@ -141,13 +141,14 @@
                 // sample the texture                
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                if(tex2D(_sobel,i.uv).x>0.1)
+                if(abs(tex2D(_sobel,i.uv).x)>0.1)
                 {
                     return float4(0.0,1.0,0.0,1.0);
                 }
                 else{
                     return tex2D(_color,i.uv);
                 }
+                //return tex2D(_color,i.uv);
                 
             }
             ENDCG

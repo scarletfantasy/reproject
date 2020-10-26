@@ -436,6 +436,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   depth: {fileID: 0}
   color: {fileID: 0}
+  sobeldepth: {fileID: 0}
 --- !u!1 &800954033
 GameObject:
   m_ObjectHideFlags: 0

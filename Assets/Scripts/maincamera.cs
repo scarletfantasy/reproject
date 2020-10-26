@@ -38,7 +38,7 @@ public class maincamera : MonoBehaviour
         }
         if(!sobeldepth)
         {
-            sobeldepth= RenderTexture.GetTemporary(source.width, source.height);
+            sobeldepth= RenderTexture.GetTemporary(source.width, source.height,0,RenderTextureFormat.ARGBFloat,RenderTextureReadWrite.Linear);
         }
         Graphics.Blit(source, depth, mat);
         Graphics.Blit(depth, sobeldepth, sobelmat);
