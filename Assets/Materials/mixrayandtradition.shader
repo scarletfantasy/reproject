@@ -1,8 +1,9 @@
-﻿Shader "Unlit/NewUnlitShader"
+﻿Shader "Unlit/mixrayandtradition"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _RayTex("Texture", 2D) = "white" {}
     }
     SubShader
     {
@@ -12,7 +13,6 @@
         Pass
         {
             CGPROGRAM
-            #pragma enable_d3d11_debug_symbols
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
@@ -35,6 +35,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            sampler2D _RayTex;
 
             v2f vert (appdata v)
             {
@@ -49,6 +50,10 @@
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
+                if((col.y>0.9)&&(col.x<0.1)&&(col.z<0.1))
+                {
+                    return tex2D(_RayTex, i.uv);
+                }
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
@@ -56,31 +61,4 @@
             ENDCG
         }
     }
-    SubShader
-    {
-        Pass
-        {
-            Name "RayTracing"
-            Tags { "LightMode" = "RayTracing" }
-
-            HLSLPROGRAM
-
-            #pragma raytracing test
-
-            #include "./Common.hlsl"
-            
-            CBUFFER_START(UnityPerMaterial)
-            float4 _Color;
-            CBUFFER_END
-
-            [shader("closesthit")]
-            void ClosestHitShader(inout RayIntersection rayIntersection : SV_RayPayload, AttributeData attributeData : SV_IntersectionAttributes)
-            {
-              rayIntersection.color = float4(1.0f,1.0f,1.0f,1.0f);
-            }
-
-            ENDHLSL
-        }
-    }
-    FallBack "Diffuse"
 }

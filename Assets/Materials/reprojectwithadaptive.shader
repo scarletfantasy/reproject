@@ -91,7 +91,7 @@
             ) {
 	            if(abs(getworldpos(cp0.uv).z-getworldpos(cp1.uv).z)>0.0001)
                 {
-                    return 2.0f;
+                    return 3.0f;
                 }
                 else{
                     return 1.0f;
@@ -141,7 +141,7 @@
                 // sample the texture                
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                if(abs(tex2D(_sobel,i.uv).x)>0.1)
+                if(abs(tex2D(_sobel,i.uv).x)>0.01)
                 {
                     return float4(0.0,1.0,0.0,1.0);
                 }

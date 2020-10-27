@@ -10,6 +10,7 @@ public class anothereye : MonoBehaviour
     RenderTexture depth;
     RenderTexture color;
     RenderTexture sobel;
+    public RenderTexture targetimage;
     public Material mat;
     void Start()
     {
@@ -32,5 +33,14 @@ public class anothereye : MonoBehaviour
         mat.SetTexture("_color", color);
         mat.SetTexture("_sobel", sobel);
     }
-    
+
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if(!targetimage)
+        {
+            targetimage = RenderTexture.GetTemporary(source.width, source.height);
+        }
+        Graphics.Blit(source, targetimage);
+        Graphics.Blit(source, destination);
+    }
 }
