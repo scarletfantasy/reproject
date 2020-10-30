@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
 
-public class CameraMono1 : MonoBehaviour
+public class holefillingcamera : MonoBehaviour
 {
 
     // Start is called before the first frame update

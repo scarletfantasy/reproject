@@ -1,4 +1,4 @@
-﻿Shader "Unlit/sobel"
+﻿Shader "reproject/sobel"
 {
     Properties
     {

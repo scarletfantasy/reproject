@@ -1,4 +1,4 @@
-﻿Shader "Unlit/reproject"
+﻿Shader "reproject/reproject"
 {
     Properties
     {

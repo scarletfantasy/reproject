@@ -1,4 +1,4 @@
-﻿Shader "Unlit/reprojectwithadaptive"
+﻿Shader "reproject/reprojectwithadaptive"
 {
     Properties
     {

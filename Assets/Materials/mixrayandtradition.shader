@@ -1,4 +1,4 @@
-﻿Shader "Unlit/mixrayandtradition"
+﻿Shader "reproject/mixrayandtradition"
 {
     Properties
     {

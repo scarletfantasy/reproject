@@ -17,7 +17,7 @@ public class maincamera : MonoBehaviour
         camera.depthTextureMode = DepthTextureMode.Depth;
         Shader getdepth = Shader.Find("ssf/getdepth");
         mat = new Material(getdepth);
-        Shader sobeldepth = Shader.Find("Unlit/sobel");
+        Shader sobeldepth = Shader.Find("reproject/sobel");
         sobelmat = new Material(sobeldepth);
     }
 
