@@ -141,7 +141,7 @@
                 // sample the texture                
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                if(abs(tex2D(_sobel,i.uv).x)>0.01)
+                if(abs(tex2D(_sobel,i.uv).x)>0.1)
                 {
                     return float4(0.0,1.0,0.0,1.0);
                 }

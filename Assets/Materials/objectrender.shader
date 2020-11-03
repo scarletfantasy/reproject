@@ -15,6 +15,7 @@
             #pragma enable_d3d11_debug_symbols
             #pragma vertex vert
             #pragma fragment frag
+            
             // make fog work
             #pragma multi_compile_fog
 
@@ -68,15 +69,39 @@
             #pragma raytracing test
 
             #include "./Common.hlsl"
-            
+            #include "./PRNG.hlsl"
+            #include "./ONB.hlsl"
+            struct IntersectionVertex
+              {
+                // Object space normal of the vertex
+                float2 uv;
+              };
+              Texture2D _MainTex;
+            SamplerState sampler_MainTex;
             CBUFFER_START(UnityPerMaterial)
             float4 _Color;
             CBUFFER_END
-
+            
+            
+            void FetchIntersectionVertex(uint vertexIndex, out IntersectionVertex outVertex)
+              {
+                outVertex.uv = UnityRayTracingFetchVertexAttribute2(vertexIndex, kVertexAttributeTexCoord0);
+              }
             [shader("closesthit")]
             void ClosestHitShader(inout RayIntersection rayIntersection : SV_RayPayload, AttributeData attributeData : SV_IntersectionAttributes)
             {
-              rayIntersection.color = float4(1.0f,1.0f,1.0f,1.0f);
+                uint3 triangleIndices = UnityRayTracingFetchTriangleIndices(PrimitiveIndex());
+
+                // Fetch the 3 vertices
+                IntersectionVertex v0, v1, v2;
+                FetchIntersectionVertex(triangleIndices.x, v0);
+                FetchIntersectionVertex(triangleIndices.y, v1);
+                FetchIntersectionVertex(triangleIndices.z, v2);
+                float3 barycentricCoordinates = float3(1.0 - attributeData.barycentrics.x - attributeData.barycentrics.y, attributeData.barycentrics.x, attributeData.barycentrics.y);
+                // Compute the full barycentric coordinates
+                float2 texCoord0 = INTERPOLATE_RAYTRACING_ATTRIBUTE(v0.uv, v1.uv, v2.uv, barycentricCoordinates);
+                float4 texColor =  _MainTex.SampleLevel(sampler_MainTex, texCoord0, 0);
+              rayIntersection.color = texColor;
             }
 
             ENDHLSL

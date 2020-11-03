@@ -15,8 +15,8 @@ inline float3 BackgroundColor(float3 origin, float3 direction)
 void AddASphereRayGenShader()
 {
   const uint2 dispatchIdx = DispatchRaysIndex().xy;
-  if((_StencilImage[dispatchIdx].y>0.99)&&(_StencilImage[dispatchIdx].x<0.01)&&(_StencilImage[dispatchIdx].z<0.01))
-  {
+  /*if((_StencilImage[dispatchIdx].y>0.99)&&(_StencilImage[dispatchIdx].x<0.01)&&(_StencilImage[dispatchIdx].z<0.01))
+  {*/
   float3 origin;
 	  float3 direction;
 	  GenerateCameraRay(origin, direction);
@@ -35,11 +35,11 @@ void AddASphereRayGenShader()
 
 	  _OutputTarget[dispatchIdx] = rayIntersection.color;
 	 
-  }
+  /*}
   else
   {
 		_OutputTarget[dispatchIdx] = float4(1.0,0.0,0.0,1.0);
-  }
+  }*/
   
 }
 

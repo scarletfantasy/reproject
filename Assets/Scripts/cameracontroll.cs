@@ -14,11 +14,11 @@ public class cameracontroll : MonoBehaviour
     private void OnPostRender()
     {
         
-        if(show.activeInHierarchy)
+        if(show.activeSelf)
         {
             show.SetActive(false);
         }
-        if(!unshow.activeInHierarchy)
+        if(!unshow.activeSelf)
         {
             unshow.SetActive(true);
         }
@@ -26,11 +26,11 @@ public class cameracontroll : MonoBehaviour
     }
     private void OnPreRender()
     {
-        if(!show.activeInHierarchy)
+        if(!show.activeSelf)
         {
             show.SetActive(true);
         }
-        if(unshow.activeInHierarchy)
+        if(unshow.activeSelf)
         {
             unshow.SetActive(false);
         }
