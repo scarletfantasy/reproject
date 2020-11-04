@@ -50,7 +50,7 @@
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                if((col.y>0.9)&&(col.x<0.1)&&(col.z<0.1))
+                if(col.w<0.9)
                 {
                     return tex2D(_RayTex, i.uv);
                 }

@@ -15,7 +15,7 @@ inline float3 BackgroundColor(float3 origin, float3 direction)
 void AddASphereRayGenShader()
 {
   const uint2 dispatchIdx = DispatchRaysIndex().xy;
-  /*if((_StencilImage[dispatchIdx].y>0.99)&&(_StencilImage[dispatchIdx].x<0.01)&&(_StencilImage[dispatchIdx].z<0.01))
+  /*if((_StencilImage[dispatchIdx].w>0.99)&&(_StencilImage[dispatchIdx].x<0.01)&&(_StencilImage[dispatchIdx].z<0.01))
   {*/
   float3 origin;
 	  float3 direction;
