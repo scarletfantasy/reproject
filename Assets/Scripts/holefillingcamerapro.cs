@@ -113,7 +113,7 @@ public class holefillingcamerapro : MonoBehaviour
     {
         cmd1.Blit(anothereyesc.targetimage, stencilimage, Vector2.one, Vector2.zero);
         Graphics.ExecuteCommandBuffer(cmd1);
-        accstruct.Dispose();
+        /*accstruct.Dispose();
         accstruct = new RayTracingAccelerationStructure();
         foreach (var r in raytracingobj.GetComponentsInChildren<MeshRenderer>())
         {
@@ -121,22 +121,22 @@ public class holefillingcamerapro : MonoBehaviour
         }
         accstruct.Build();
         int accelerationStructureShaderId = Shader.PropertyToID("_AccelerationStructure");
-        cmd.SetRayTracingAccelerationStructure(_shader, accelerationStructureShaderId, accstruct);
+        cmd.SetRayTracingAccelerationStructure(_shader, accelerationStructureShaderId, accstruct);*/
         int _stencilShaderId = Shader.PropertyToID("_StencilImage");
         cmd.SetRayTracingTextureParam(_shader, _stencilShaderId, stencilimage);
         Graphics.ExecuteCommandBuffer(cmd);
-        foreach (var r in raytracingobj.GetComponentsInChildren<MeshRenderer>())
+        /*foreach (var r in raytracingobj.GetComponentsInChildren<MeshRenderer>())
         {
             r.enabled = false;
-        }
+        }*/
         //RenderTexture.ReleaseTemporary(rt);
     }
     private void OnPostRender()
     {
-        foreach (var r in raytracingobj.GetComponentsInChildren<MeshRenderer>())
+        /*foreach (var r in raytracingobj.GetComponentsInChildren<MeshRenderer>())
         {
             r.enabled = true;
-        }
+        }*/
     }
     // Update is called once per frame
     void Update()

@@ -11,6 +11,52 @@ public class cameracontroll : MonoBehaviour
     {
         
     }
+   /* private void OnPostRender()
+    {
+
+
+        var render = show.GetComponent<MeshRenderer>();
+        if (render)
+        {
+            render.enabled = false;
+        }
+        foreach (var r in show.GetComponentsInChildren<MeshRenderer>())
+        {
+            r.enabled = false;
+        }
+        var unrender = unshow.GetComponent<MeshRenderer>();
+        if (unrender)
+        {
+            unrender.enabled = true;
+        }
+        foreach (var r in unshow.GetComponentsInChildren<MeshRenderer>())
+        {
+            r.enabled = true;
+        }
+
+    }
+    private void OnPreRender()
+    {
+        var render = show.GetComponent<MeshRenderer>();
+        if(render)
+        {
+            render.enabled = true;
+        }
+        foreach (var r in show.GetComponentsInChildren<MeshRenderer>())
+        {
+            r.enabled = true;
+        }
+        var unrender = unshow.GetComponent<MeshRenderer>();
+        if (unrender)
+        {
+            unrender.enabled = false;
+        }
+        foreach (var r in unshow.GetComponentsInChildren<MeshRenderer>())
+        {
+            r.enabled = false;
+        }
+
+    }*/
     private void OnPostRender()
     {
         
