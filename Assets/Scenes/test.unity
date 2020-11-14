@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 51816974}
   - component: {fileID: 51816973}
   - component: {fileID: 51816977}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 430459686}
   - component: {fileID: 430459685}
   - component: {fileID: 430459684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567555419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04d9ec3b741583c419a725308d1a9678, type: 3}
   m_Name: 
@@ -538,7 +538,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 802813211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 898757312}
   - component: {fileID: 898757311}
   - component: {fileID: 898757310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157918407}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04d9ec3b741583c419a725308d1a9678, type: 3}
   m_Name: 
@@ -862,6 +862,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aa88974f78c4237409fa57e91a273ebb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa88974f78c4237409fa57e91a273ebb, type: 3}
 --- !u!4 &1482574284 stripped
@@ -882,6 +887,7 @@ GameObject:
   - component: {fileID: 2147321828}
   - component: {fileID: 2147321827}
   - component: {fileID: 2147321831}
+  - component: {fileID: 2147321830}
   m_Layer: 0
   m_Name: Holefilling Camera
   m_TagString: Untagged
@@ -928,7 +934,7 @@ Camera:
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -954,7 +960,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2147321831
+--- !u!114 &2147321830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -962,6 +968,24 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2147321826}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2630a6df02ea8b42bbe07a1351c095b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixmat: {fileID: 2100000, guid: 1564bc0ba7b439a468a194755d2810cf, type: 2}
+  _shader: {fileID: 4807578003741378534, guid: 05af920dd113a204eaf4ac8f655fc949, type: 3}
+  rt: {fileID: 0}
+  raytracingobj: {fileID: 802813210}
+  renders: []
+  anothereyesc: {fileID: 1157918412}
+--- !u!114 &2147321831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147321826}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02fd209b850bf8f44ac4c5c2f02d6077, type: 3}
   m_Name: 
