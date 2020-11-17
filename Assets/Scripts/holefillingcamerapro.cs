@@ -28,6 +28,7 @@ public class holefillingcamerapro : MonoBehaviour
     const int maxNumSubMeshes = 32;
     private bool[] subMeshFlagArray = new bool[maxNumSubMeshes];
     private bool[] subMeshCutoffArray = new bool[maxNumSubMeshes];
+    bool once;
     private static void SetupCamera(Camera camera)
     {
         Shader.SetGlobalVector(CameraShaderParams._WorldSpaceCameraPos, camera.transform.position);
@@ -70,14 +71,16 @@ public class holefillingcamerapro : MonoBehaviour
     }
     private void Awake()
     {
-        
+        once = false;
         for (var i = 0; i < maxNumSubMeshes; ++i)
         {
             subMeshFlagArray[i] = true;
             subMeshCutoffArray[i] = false;
         }
         cmd = new CommandBuffer();
+        cmd.name = "cmd";
         cmd1 = new CommandBuffer();
+        cmd1.name = "cmd1";
         //cmd.name = "ray";
         camera = GetComponent<Camera>();
         SetupCamera(camera);
@@ -103,6 +106,7 @@ public class holefillingcamerapro : MonoBehaviour
         cmd.DispatchRays(_shader, "AddASphereRayGenShader", (uint)800, (uint)600, 1, camera);
         //cmd.DispatchRays(_shader, "OutputColorRayGenShader", (uint)800, (uint)600, 1, camera);
         cmd.Blit(outputTarget, rt, Vector2.one, Vector2.zero);
+        cmd1.Blit(anothereyesc.targetimage, stencilimage, Vector2.one, Vector2.zero);
         //camera.AddCommandBuffer(CameraEvent.AfterForwardOpaque, cmd);
     }
     void Start()
@@ -111,7 +115,7 @@ public class holefillingcamerapro : MonoBehaviour
     }
     private void OnPreRender()
     {
-        cmd1.Blit(anothereyesc.targetimage, stencilimage, Vector2.one, Vector2.zero);
+        
         Graphics.ExecuteCommandBuffer(cmd1);
         /*accstruct.Dispose();
         accstruct = new RayTracingAccelerationStructure();
@@ -123,7 +127,12 @@ public class holefillingcamerapro : MonoBehaviour
         int accelerationStructureShaderId = Shader.PropertyToID("_AccelerationStructure");
         cmd.SetRayTracingAccelerationStructure(_shader, accelerationStructureShaderId, accstruct);*/
         int _stencilShaderId = Shader.PropertyToID("_StencilImage");
-        cmd.SetRayTracingTextureParam(_shader, _stencilShaderId, stencilimage);
+        if(!once)
+        {
+            cmd.SetRayTracingTextureParam(_shader, _stencilShaderId, stencilimage);
+            once = true;
+        }
+        //cmd.SetRayTracingTextureParam(_shader, _stencilShaderId, stencilimage);
         Graphics.ExecuteCommandBuffer(cmd);
         /*foreach (var r in raytracingobj.GetComponentsInChildren<MeshRenderer>())
         {
