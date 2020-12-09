@@ -18,5 +18,12 @@ platform: gtx1060,i7-7700hq
 |reproject|0.25ms|
 |hole filling with ray tracing|1.74ms|
 
+
+|render step|render consuming|
+|---|---|
+|forwardrendering and depth| 1.03ms|
+|reproject|0.11ms|
+|rerender hole filling |0.65ms|
+
 it's obvious that the reproject step reduce the time consuming of rerendering ,but the ray tracing step is not satisfying(i guess it's due to my hardware limit). 
 
