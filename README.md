@@ -6,6 +6,11 @@ a unity proj implement the reproject in vr
 
 just small modify the render order for adding the dx10 ray tracing shader,the ray tracing step not modify the render pipeline(e.g. srp)
 
+# scenes
+* sample:some basic geos
+* sponza:sponza with raytracing method
+* sponza tradition:sponza with tradition rerender method
+
 # result and analyze
 platform: gtx1060,i7-7700hq
 
