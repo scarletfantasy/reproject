@@ -115,7 +115,7 @@ public class holefillingcamerapro : MonoBehaviour
     }
     private void OnPreRender()
     {
-        
+        //Graphics.Blit(anothereyesc.targetimage, stencilimage);
         Graphics.ExecuteCommandBuffer(cmd1);
         /*accstruct.Dispose();
         accstruct = new RayTracingAccelerationStructure();
